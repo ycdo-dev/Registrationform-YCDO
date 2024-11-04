@@ -1,0 +1,270 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Hanuman', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Typography */
+.moul-font {
+    font-family: 'Moul', cursive !important;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #0C5DEF;
+    border-radius: 2px;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Hanuman', Arial, sans-serif;
+}
+
+input:focus, select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+    outline: none;
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(240deg, #52B8FF, #0C5DEF);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(12,93,239,0.3);
+}
+
+/* Required field indicator */
+.required-field::after {
+    content: " *";
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Messages */
+.success-message, .error-message {
+    display: none;
+    padding: 15px;
+    margin-top: 25px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    animation: modalIn 0.4s ease;
+}
+
+@keyframes modalIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #e74c3c;
+}
+
+/* QR Code styles */
+#qrcode {
+    margin: 25px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    width: fit-content;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.qr-info {
+    margin: 20px 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.download-button {
+    margin-top: 20px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    padding: 12px 25px;
+    font-size: 16px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    input, select, button {
+        font-size: 16px;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        padding: 20px;
+    }
+}
+
+/* Active state for inputs */
+input:not(:placeholder-shown), 
+select:not([value=""]) {
+    border-color: #2ecc71;
+}
+
+/* Invalid state */
+input:invalid {
+    border-color: #e74c3c;
+}
+
+/* Loading state */
+.loading {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
