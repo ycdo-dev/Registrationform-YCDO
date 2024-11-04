@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ទម្រង់ចុះឈ្មោះ</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Moul&family=Hanuman:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+    
+    <!-- QR Code library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="moul-font">ទម្រង់ចុះឈ្មោះ</h1>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name" class="required-field">ឈ្មោះពេញ</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender" class="required-field">ភេទ</label>
+                <select id="gender" name="gender" required>
+                    <option value="">ជ្រើសរើសភេទ</option>
+                    <option value="ប្រុស">ប្រុស</option>
+                    <option value="ស្រី">ស្រី</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="required-field">លេខទូរស័ព្ទ</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">អ៊ីមែល</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="required-field">អាសយដ្ឋាន</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <button type="submit" class="moul-font">ដាក់ស្នើ</button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            ការចុះឈ្មោះបានជោគជ័យ!
+        </div>
+
+        <div id="errorMessage" class="error-message">
+            មានបញ្ហាកើតឡើង។ សូមព្យាយាមម្តងទៀត។
+        </div>
+
+        <div id="qrModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 class="moul-font">QR Code សម្រាប់ការចុះឈ្មោះ</h2>
+              <div id="qrcode"></div>
+                <p class="qr-info">សូមរក្សាទុក QR code នេះសម្រាប់ស្កែនពេលមកដល់កម្មវិធី</p>
+                <button id="downloadQR" class="download-button moul-font">ទាញយក QR Code</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
